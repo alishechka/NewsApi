@@ -5,7 +5,7 @@ import com.example.newsapi.common.network.NewsClient
 import javax.inject.Inject
 
 class RetrofitRepositoryImpl @Inject constructor(private val client: NewsClient) : RemoteRepositoryInterface {
-     override  fun getTopNews(): List<News> {
+     override suspend fun getTopNews(): List<News> {
         return client.getHeadlines().articles
     }
 

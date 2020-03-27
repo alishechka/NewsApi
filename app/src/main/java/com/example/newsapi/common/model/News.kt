@@ -5,16 +5,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "news")
+@Entity
 data class News(
 
     @Embedded val source: Source,
-    val author: String,
+    val author: String?,
     @PrimaryKey
     val title: String,
-    val description: String,
+    val description: String?,
     val url: String,
-    val urlToImage: String,
+    val urlToImage: String?,
     val publishedAt: String,
-    val content: String
+    val content: String?
 )

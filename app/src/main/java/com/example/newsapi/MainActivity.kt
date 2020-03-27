@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
     @Inject
     lateinit var viewModel: NewsViewModel
 
@@ -42,6 +43,9 @@ class MainActivity : AppCompatActivity() {
     private fun initLiveData() {
         viewModel.getNewsSuccess().observe(this, Observer {
             initRecyclerView(it)
+        })
+        viewModel.getNewsError().observe(this, Observer {
+            tv_error.text=it
         })
     }
 

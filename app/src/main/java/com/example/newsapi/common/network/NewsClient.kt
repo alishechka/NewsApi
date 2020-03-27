@@ -11,8 +11,8 @@ import retrofit2.http.Query
 interface NewsClient {
 
     @GET(ENDPOINT_DIRECTORY_TOP_HEADLINES)
-    fun getHeadlines(
-        @Query(ENDPOINT_QUERY_COUNTRY) country: String = "us",
-        @Query(ENDPOINT_QUERY_API_KEY) apiKey: String = API_KEY
+    suspend fun getHeadlines(
+        @Query(ENDPOINT_QUERY_API_KEY) apiKey: String = API_KEY,
+        @Query(ENDPOINT_QUERY_COUNTRY) country: String = "us"
     ): NewsBase
 }

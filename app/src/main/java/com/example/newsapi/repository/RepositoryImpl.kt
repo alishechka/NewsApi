@@ -7,7 +7,7 @@ class RepositoryImpl @Inject constructor(
     private val remoteRepo:RemoteRepositoryInterface,
     private val localRepo:LocalRepositoryInterface
 ) :RepositoryInterface{
-    override fun makeRetrofitCall(): List<News> {
+    override suspend fun makeRetrofitCall(): List<News> {
         return remoteRepo.getTopNews()
     }
 
