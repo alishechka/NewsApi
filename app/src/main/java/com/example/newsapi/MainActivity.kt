@@ -1,6 +1,7 @@
 package com.example.newsapi
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,7 @@ import com.example.newsapi.dagger.modules.NewsViewModelModule
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),onItemClicked {
 
     @Inject
     lateinit var viewModel: NewsViewModel
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView(list: List<News>) {
         rv_news.apply {
-            adapter = NewsAdapter(list)
+            adapter = NewsAdapter(list,this@MainActivity)
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
@@ -61,5 +62,16 @@ class MainActivity : AppCompatActivity() {
             .appComponent((applicationContext as MyApp).component())
             .newsViewModelModule(NewsViewModelModule(this))
             .build().inject(this)
+    }
+
+    override fun onClickItem(url: String) {
+        startActivity(
+            Intent(this, ChromeTabs::class.java).apply {
+                putExtra(INTENT_KEY,url)
+            }
+        )
+    }
+    companion object{
+        const val INTENT_KEY="intent_key"
     }
 }

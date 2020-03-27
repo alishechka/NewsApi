@@ -81,7 +81,7 @@ dependencies {
     // Chrome tabs
     implementation "androidx.browser:browser:$chrome_tabs_version"
 
-    
+
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
 
 }
