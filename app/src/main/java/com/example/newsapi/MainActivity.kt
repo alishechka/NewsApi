@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapi.common.model.News
@@ -65,13 +67,8 @@ class MainActivity : AppCompatActivity(),onItemClicked {
     }
 
     override fun onClickItem(url: String) {
-        startActivity(
-            Intent(this, ChromeTabs::class.java).apply {
-                putExtra(INTENT_KEY,url)
-            }
-        )
-    }
-    companion object{
-        const val INTENT_KEY="intent_key"
+        CustomTabsIntent.Builder()
+            .build()
+            .launchUrl(this, Uri.parse(url))
     }
 }
