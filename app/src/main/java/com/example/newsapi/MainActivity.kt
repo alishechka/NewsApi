@@ -1,18 +1,15 @@
 package com.example.newsapi
 
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapi.common.model.News
-import com.example.newsapi.dagger.components.AppComponent
-import com.example.newsapi.dagger.components.DaggerAppComponent
 import com.example.newsapi.dagger.components.DaggerNewsViewModelComponent
 import com.example.newsapi.dagger.modules.NewsViewModelModule
 import kotlinx.android.synthetic.main.activity_main.*
